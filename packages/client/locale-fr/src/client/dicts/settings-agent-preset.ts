@@ -1,0 +1,62 @@
+/**
+ * French `settings.agentPreset` namespace dictionary. Mirrors the shipped `en` key set.
+ */
+export const fr = {
+  'error': "Impossible de charger les presets d'agent.",
+  'userTrust': 'Personnalisé',
+  'seatHint': "Preset d'agent pour la session que vous allez démarrer",
+  'headerHint': "Le preset d'agent que cette session exécute, fixé à son démarrage",
+  'nav': "Presets d'agent",
+  'sectionIntro':
+    "Un preset est la composition de plugins qu'exécute l'agent d'une session — ses outils, son prompt et ses capacités. "
+    + "Dupliquez un preset existant et faites-le vôtre, ou laissez l'agent en composer un pour vous en Mode créateur.",
+  'builtIn': 'Intégré',
+  'setDefault': 'Définir comme défaut',
+  'view': 'Voir',
+  'presetStandardName': 'Mode standard',
+  'presetStandardDescription': 'Agent de codage complet avec édition de fichiers, shell, recherche de fichiers et web, skills, planification, objectifs, sous-agents et workflows.',
+  'presetPtcName': 'Mode PTC',
+  'presetPtcDescription': "Agent de codage complet sans l'outil de workflows ; les autres outils sont exposés via le SDK du mode PTC, afin que le modèle puisse combiner des opérations en plusieurs étapes dans un seul programme TypeScript.",
+  'presetMinimalName': 'Mode minimal',
+  'presetMinimalDescription': 'Agent de codage à deux outils : bash persistant et str_replace_editor.',
+  'presetCordisName': 'Mode créateur',
+  'presetCordisDescription': "Conçu pour créer des presets d'agent personnalisés, avec toutes les capacités du Mode standard, plus l'inspection à l'exécution, les expérimentations de plugins et des conseils de création de presets.",
+  'duplicate': 'Dupliquer',
+  'duplicateUnavailable': "Ce déploiement ne dispose d'aucun dossier de presets accessible en écriture.",
+  'delete': 'Supprimer',
+  'presetId': 'Identifiant',
+  'presetIdPlaceholder': 'my-agent',
+  'displayName': 'Nom',
+  'displayNamePlaceholder': 'Affiché dans le sélecteur ; par défaut, l\'identifiant',
+  'inUse': "En cours d'utilisation",
+  'builtInGroup': 'Intégrés',
+  'customGroup': 'Personnalisés',
+  'noDescription': 'Aucune description.',
+  'brokenBadge': 'Échec du chargement',
+  'brokenNoCopy': 'Un preset dont le chargement a échoué ne peut pas être dupliqué',
+  'switchRefused': 'Impossible de passer à {name} : {reason}',
+  'copyOf': 'Copié de',
+  'composition': 'Composition (agent.cordis.yml)',
+  'cancel': 'Annuler',
+  'close': 'Fermer',
+  'retry': 'Réessayer',
+  'copyTitle': 'Dupliquer le preset',
+  'copyIntro':
+    'Le preset entier est copié sur cette machine. L\'identifiant devient le nom du dossier et ne peut plus être modifié ensuite ; '
+    + 'tout le reste se modifie dans les fichiers du preset lui-même.',
+  'create': 'Créer',
+  'creating': 'Création…',
+  'creatorDraft': 'Créer un preset personnalisé avec le Mode créateur',
+  'openLocation': 'Ouvrir le dossier',
+  'showLocation': "Afficher l'emplacement",
+  'revealedPathLabel': 'Fichiers du preset :',
+  'idRequired': 'Donnez un identifiant au preset.',
+  'idInvalid': "Utilisez des lettres minuscules, des chiffres et des traits d'union, en commençant par une lettre ou un chiffre.",
+  'idTaken': 'Un preset portant cet identifiant existe déjà.',
+  'deleteTitle': 'Supprimer ce preset ?',
+  'deleteDescription':
+    'Le dossier du preset est supprimé. Les sessions déjà lancées sur ce preset continuent de fonctionner ; '
+    + 'les nouvelles sessions ne pourront pas le sélectionner.',
+  'deleteConfirm': 'Supprimer',
+  'deleting': 'Suppression…',
+} as const
