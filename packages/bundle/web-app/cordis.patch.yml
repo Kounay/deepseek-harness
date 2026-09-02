@@ -96,6 +96,10 @@
     - id: settings-controller
       name: '@deepseek-ai/dsh-api-settings-controller'
 
+    # Read-only git work-tree facts for the session workspace over Typert Remote.
+    - id: git-status-controller
+      name: '@deepseek-ai/dsh-api-git-status-controller'
+
     # Workspace commands and reconnect-safe projection over Typert Remote.
     - id: workspace-controller
       name: '@deepseek-ai/dsh-api-workspace-controller'
@@ -179,6 +183,15 @@
 
     - id: locale
       name: '@deepseek-ai/dsh-client-locale'
+
+    # French language pack: adds the fr locale (fallback en) and French
+    # dictionaries for every shipped UI namespace.
+    - id: locale-fr
+      name: '@deepseek-ai/dsh-client-locale-fr'
+
+    # Git status bar above the composer: work-tree facts of the session workspace.
+    - id: ui-git-status
+      name: '@deepseek-ai/dsh-client-ui-git-status'
 
     - id: ui-layout
       name: '@deepseek-ai/dsh-client-ui-layout'

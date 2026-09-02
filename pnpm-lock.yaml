@@ -665,6 +665,19 @@ importers:
         specifier: ^4.4.3
         version: 4.4.3
 
+  packages/api/git-status-controller:
+    dependencies:
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
+    devDependencies:
+      '@deepseek-ai/cordis':
+        specifier: workspace:^
+        version: link:../../../vendor/cordis
+      '@deepseek-ai/dsh-typert-protocol':
+        specifier: workspace:^
+        version: link:../../typert/protocol
+
   packages/api/remotes:
     dependencies:
       '@deepseek-ai/dsh-deque':
@@ -686,6 +699,9 @@ importers:
       '@deepseek-ai/dsh-api-gateway':
         specifier: workspace:^
         version: link:../gateway
+      '@deepseek-ai/dsh-api-git-status-controller':
+        specifier: workspace:^
+        version: link:../git-status-controller
       '@deepseek-ai/dsh-api-session-controller':
         specifier: workspace:^
         version: link:../session-controller
@@ -1446,6 +1462,9 @@ importers:
       '@deepseek-ai/dsh-agent-presets':
         specifier: workspace:^
         version: link:../../preset/agent-presets
+      '@deepseek-ai/dsh-api-git-status-controller':
+        specifier: workspace:^
+        version: link:../../api/git-status-controller
       '@deepseek-ai/dsh-api-remotes':
         specifier: workspace:^
         version: link:../../api/remotes
@@ -1470,6 +1489,9 @@ importers:
       '@deepseek-ai/dsh-client-locale':
         specifier: workspace:^
         version: link:../../client/locale
+      '@deepseek-ai/dsh-client-locale-fr':
+        specifier: workspace:^
+        version: link:../../client/locale-fr
       '@deepseek-ai/dsh-client-modules':
         specifier: workspace:^
         version: link:../../client/modules
@@ -1506,6 +1528,9 @@ importers:
       '@deepseek-ai/dsh-client-ui-directory-picker-native':
         specifier: workspace:^
         version: link:../../client/ui-directory-picker-native
+      '@deepseek-ai/dsh-client-ui-git-status':
+        specifier: workspace:^
+        version: link:../../client/ui-git-status
       '@deepseek-ai/dsh-client-ui-goal':
         specifier: workspace:^
         version: link:../../client/ui-goal
@@ -1783,6 +1808,27 @@ importers:
       react:
         specifier: ^18.2.0
         version: 18.3.1
+
+  packages/client/locale-fr:
+    devDependencies:
+      '@deepseek-ai/cordis':
+        specifier: workspace:^
+        version: link:../../../vendor/cordis
+      '@deepseek-ai/dsh-client-locale':
+        specifier: workspace:^
+        version: link:../locale
+      '@deepseek-ai/dsh-client-test-runtime':
+        specifier: workspace:^
+        version: link:../../test-support/client-runtime
+      '@deepseek-ai/dsh-client-ui-renderer':
+        specifier: workspace:^
+        version: link:../ui-renderer
+      '@deepseek-ai/dsh-client-ui-settings':
+        specifier: workspace:^
+        version: link:../ui-settings
+      '@deepseek-ai/dsh-client-ui-slots':
+        specifier: workspace:^
+        version: link:../ui-slots
 
   packages/client/modules:
     devDependencies:
@@ -2382,6 +2428,57 @@ importers:
         version: link:../ui-workspace
       '@testing-library/react':
         specifier: ^16.1.0
+        version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@types/react':
+        specifier: ~18.3.1
+        version: 18.3.31
+      react:
+        specifier: ^18.2.0
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.3.1(react@18.3.1)
+
+  packages/client/ui-git-status:
+    devDependencies:
+      '@deepseek-ai/cordis':
+        specifier: workspace:^
+        version: link:../../../vendor/cordis
+      '@deepseek-ai/dsh-api-git-status-controller':
+        specifier: workspace:^
+        version: link:../../api/git-status-controller
+      '@deepseek-ai/dsh-api-remotes':
+        specifier: workspace:^
+        version: link:../../api/remotes
+      '@deepseek-ai/dsh-api-session-controller':
+        specifier: workspace:^
+        version: link:../../api/session-controller
+      '@deepseek-ai/dsh-client-locale':
+        specifier: workspace:^
+        version: link:../locale
+      '@deepseek-ai/dsh-client-store':
+        specifier: workspace:^
+        version: link:../store
+      '@deepseek-ai/dsh-client-test-runtime':
+        specifier: workspace:^
+        version: link:../../test-support/client-runtime
+      '@deepseek-ai/dsh-client-ui-conversation':
+        specifier: workspace:^
+        version: link:../ui-conversation
+      '@deepseek-ai/dsh-client-ui-primitives':
+        specifier: workspace:^
+        version: link:../ui-primitives
+      '@deepseek-ai/dsh-client-ui-renderer':
+        specifier: workspace:^
+        version: link:../ui-renderer
+      '@deepseek-ai/dsh-client-ui-slots':
+        specifier: workspace:^
+        version: link:../ui-slots
+      '@deepseek-ai/dsh-typert-protocol':
+        specifier: workspace:^
+        version: link:../../typert/protocol
+      '@testing-library/react':
+        specifier: ^16.3.0
         version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@types/react':
         specifier: ~18.3.1

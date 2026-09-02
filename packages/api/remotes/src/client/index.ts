@@ -4,6 +4,7 @@ import type { Context } from '@deepseek-ai/cordis'
 import agentPresetsRemote from '@deepseek-ai/dsh-agent-presets/remote'
 import commandsRemote from '@deepseek-ai/dsh-commands/remote'
 import settingsControllerRemote from '@deepseek-ai/dsh-api-settings-controller/remote'
+import gitStatusRemote from '@deepseek-ai/dsh-api-git-status-controller/remote'
 import goalsRemote from '@deepseek-ai/dsh-goal/remote'
 import llmRemote from '@deepseek-ai/dsh-llm/remote'
 import dynamicRemote from '@deepseek-ai/dsh-cordis-host-runner/remote'
@@ -144,7 +145,7 @@ export async function apply(ctx: Context): Promise<() => Promise<void>> {
   const disposers: Array<() => Promise<void>> = []
   try {
     for (const contribution of [
-      agentPresetsRemote, commandsRemote, settingsControllerRemote, goalsRemote, llmRemote, dynamicRemote,
+      agentPresetsRemote, commandsRemote, settingsControllerRemote, gitStatusRemote, goalsRemote, llmRemote, dynamicRemote,
       pluginInventoryRemote, messageFeedbackRemote, sessionReferencesRemote,
       subagentsRemote, sessionRemote, workspaceRemote,
     ]) {

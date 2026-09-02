@@ -1,0 +1,93 @@
+/* Git status bar: one tip card on the composer stack, width-following the
+   shared composer card axis (--dsh-composer-card-max-width) like the Goal,
+   Todo, and Queue cards. */
+
+.bar {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: calc(var(--dsh-composer-card-max-width) - 4 * var(--dsh-composer-dock-inset));
+  height: 34px;
+  margin: 0 auto;
+  padding: 2px 12px;
+  border: 0.5px solid var(--dsw-alias-border-l1);
+  border-radius: 10px;
+  background: var(--dsw-specific-tip);
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--dsw-alias-label-primary);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.glyph {
+  display: inline-flex;
+  flex: none;
+  color: var(--dsw-alias-label-tertiary);
+}
+
+.link {
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in srgb, currentColor 55%, transparent);
+}
+
+.link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+.separator {
+  user-select: none;
+  color: var(--dsw-alias-label-caption);
+}
+
+.muted {
+  color: var(--dsw-alias-label-secondary);
+}
+
+.offsets {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.grow {
+  flex: 1 1 auto;
+}
+
+.counts {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--dsw-alias-label-secondary);
+}
+
+.error {
+  color: var(--dsw-alias-state-error-primary);
+}
+
+.retry {
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  color: var(--dsw-alias-label-secondary);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

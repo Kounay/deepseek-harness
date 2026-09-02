@@ -51,6 +51,8 @@
       "@deepseek-ai/dsh-api-session-controller/remote-events": ["./packages/api/session-controller/src/remote-events.ts"],
       "@deepseek-ai/dsh-api-settings-controller": ["./packages/api/settings-controller/src/index.ts"],
       "@deepseek-ai/dsh-api-settings-controller/types": ["./packages/api/settings-controller/src/types.ts"],
+      "@deepseek-ai/dsh-api-git-status-controller": ["./packages/api/git-status-controller/src/index.ts"],
+      "@deepseek-ai/dsh-api-git-status-controller/types": ["./packages/api/git-status-controller/src/types.ts"],
       "@deepseek-ai/dsh-api-workspace-controller": ["./packages/api/workspace-controller/src/index.ts"],
       "@deepseek-ai/dsh-api-workspace-controller/client": ["./packages/api/workspace-controller/src/client/index.ts"],
       "@deepseek-ai/dsh-api-workspace-controller/types": ["./packages/api/workspace-controller/src/types.ts"],

@@ -125,6 +125,8 @@ declare module '@deepseek-ai/dsh-client-ui-slots' {
     'conversation.hero.agentPreset': { kind: 'single'; scope: 'root'; owner: HeroAgentPresetOwnerProps }
     /** Full-width entries above the composer card. */
     'conversation.input.dock': { kind: 'list'; scope: 'session'; owner: InputZone }
+    /** Thin persistent strip rendered just above the composer card. */
+    'conversation.composer.status': { kind: 'single'; scope: 'session' }
     /** Floating entries rendered inside the resident composer card. */
     'conversation.input.overlay': { kind: 'list'; scope: 'session' }
     /** Ambient entries below the composer card. */
@@ -320,6 +322,7 @@ export type ConversationSlotProps =
   & PropsRenderSlots<
     | 'conversation.session' | 'conversation.session.header'
     | 'conversation.composer' | 'conversation.composer.bar'
+    | 'conversation.composer.status'
     | 'conversation.input.dock'
     | 'conversation.hero.brand.mark'
     | 'conversation.hero.workspace'
