@@ -9,9 +9,10 @@ Document de suivi partagé, à lire par l'humain et l'agent. Il décrit ce que c
 | Fork | https://github.com/Kounay/deepseek-harness |
 | Amont (`upstream`) | https://github.com/deepseek-ai/deepseek-harness |
 | Branche publiée | `master` (fork) |
-| Base du fork | `49a606bc5b` — release `dsh-0.1.2-alpha.5` |
-| Features | 2 commits directs sur `master` |
-| Branche de synchronisation | `sync/upstream-0.1.6` (merge de l'amont 0.1.6, en cours de validation) |
+| Base d'origine du fork | `49a606bc5b` — release `dsh-0.1.2-alpha.5` |
+| Version actuelle de `master` | `42e1d273dd` — **amont 0.1.6-alpha.2 + features du fork** |
+| Features | 2 commits (`5e27359685`, `bd0ec6b622`) puis le merge `42e1d273dd` |
+| Branche de synchronisation | `sync/upstream-0.1.6` (même commit que `master`, conservée pour référence) |
 
 ## Contenu publié sur `master`
 
@@ -19,6 +20,7 @@ Document de suivi partagé, à lire par l'humain et l'agent. Il décrit ce que c
 |---|---|---|
 | `5e27359685` | `feat(web): ship French language pack for the GUI` | Nouveau paquet `packages/client/locale-fr` (42 fichiers, +1684) |
 | `bd0ec6b622` | `feat(web): git status bar above the composer` | Contrôleur `gitStatus`, UI `ui-git-status`, slot `conversation.composer.status`, intégrations (34 fichiers, +1526/−9) |
+| `42e1d273dd` | `Merge upstream/master (0.1.6-alpha.2) into the fork features` | Merge de l'amont 3141 commits + réapplication des features et adaptations 0.1.6 |
 
 Le commit `bd0ec6b622` remplace `bf088e5a03` (amend) pour inclure les séparateurs `·` entre compteurs.
 
