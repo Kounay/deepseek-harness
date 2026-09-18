@@ -3,6 +3,7 @@
  * branch opens the GitHub page at that branch when an origin remote exists.
  * Renders nothing outside a git work tree.
  */
+import { useEffect } from 'react'
 import type { SnapshotStore } from '@deepseek-ai/dsh-client-store'
 import type { InjectFace, PropsLocale, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots'
 import { IconBranchOutline16 } from '@deepseek-ai/dsh-client-ui-primitives'
@@ -21,6 +22,8 @@ export interface GitStatusBarInjected {
   refresh: () => Promise<void>
   /** Reveal the repository folder on the Host desktop. */
   openRepo: () => Promise<void>
+  /** Point the bar at this seat's Session. */
+  watch: () => void
 }
 
 /** Full component props. */
@@ -38,8 +41,12 @@ function variant(count: number): 'one' | 'other' {
  * Render the bar, or nothing when the current session has no git work tree.
  * @param props - composed slot props.
  */
-export function GitStatusBar({ useGitStatus, refresh, openRepo, t }: GitStatusBarProps) {
+export function GitStatusBar({ sessionId, useGitStatus, refresh, openRepo, watch, t }: GitStatusBarProps) {
   const state = useGitStatus(snapshot => snapshot)
+
+  // Point the controller at this seat's Session; the scope supplies a new
+  // sessionId when the visible Session changes.
+  useEffect(() => { watch() }, [sessionId, watch])
 
   if (state.phase === 'hidden') return null
   const { status } = state

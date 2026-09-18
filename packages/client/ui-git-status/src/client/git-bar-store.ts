@@ -1,9 +1,10 @@
 /**
- * GitStatusBarController: follows the conversation's current session and keeps
- * one work-tree snapshot in a renderer-bound store. All reads go through the
- * `gitStatus` Remote namespace; no git runs in the browser.
+ * GitStatusBarController: watches one Session's work tree and keeps its
+ * snapshot in a renderer-bound store. All reads go through the `gitStatus`
+ * Remote namespace; no git runs in the browser.
  */
 import type { GitStatusView } from '@deepseek-ai/dsh-api-git-status-controller'
+import type { SessionId } from '@deepseek-ai/dsh-session/types'
 import type { Context as ClientContext } from '@deepseek-ai/cordis'
 import { createSnapshotStore, type SnapshotStore } from '@deepseek-ai/dsh-client-store'
 
@@ -26,12 +27,15 @@ const HIDDEN: GitStatusBarState = { phase: 'hidden', status: null, error: null }
 export type GitStatusBarStore = SnapshotStore<GitStatusBarState>
 
 /**
- * Keep one status per current session cwd, refreshing when the selection or
- * its directory changes and on reconnect.
+ * Keep one status for the watched Session's cwd, refreshing when that Session's
+ * directory changes and on reconnect.
  */
 export class GitStatusBarController {
   /** Bar snapshot the renderer subscribes to. */
   readonly store: GitStatusBarStore = createSnapshotStore<GitStatusBarState>(HIDDEN)
+
+  /** Session whose work tree the bar describes; set by the seat's scope. */
+  private sessionId: SessionId | undefined
 
   /** Directory the current status describes; avoids redundant re-reads. */
   private cwd: string | undefined
@@ -45,11 +49,21 @@ export class GitStatusBarController {
     this.store.set({ ...this.store.getSnapshot(), ...patch })
   }
 
-  /** Read the current selection's cwd from the sessions list. */
+  /**
+   * Point the bar at one Session. Idempotent for the already-watched Session,
+   * so the seat's registration and its render effect may both call it.
+   * @param sessionId - Session identity rendered by the seat's scope.
+   */
+  watch(sessionId: SessionId): void {
+    if (sessionId === this.sessionId && this.store.getSnapshot().status !== null) return
+    this.sessionId = sessionId
+    void this.refresh()
+  }
+
+  /** Read the watched Session's cwd from the sessions list. */
   private currentCwd(): string | undefined {
-    const state = this.ctx.sessions.list.getSnapshot()
-    if (state.current === undefined) return undefined
-    return state.byId[state.current]?.cwd
+    if (this.sessionId === undefined) return undefined
+    return this.ctx.sessions.list.getSnapshot().byId[this.sessionId]?.cwd
   }
 
   /**
@@ -100,7 +114,7 @@ export class GitStatusBarController {
   }
 
   /**
-   * Follow the sessions list: any selection or cwd change re-probes, and an
+   * Follow the sessions list: a watched Session's cwd change re-probes, and an
    * explicit `refresh()` from the seat stays available for staleness.
    * @returns a disposer stopping the subscription.
    */
@@ -109,7 +123,6 @@ export class GitStatusBarController {
       this.ctx.sessions.list.subscribe(() => { void this.refresh() }),
       this.ctx.on('connection/reset', () => { void this.refresh() }),
     ]
-    void this.refresh()
     return () => { for (const dispose of disposers) dispose() }
   }
 }

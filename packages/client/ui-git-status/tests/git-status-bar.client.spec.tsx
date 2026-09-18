@@ -42,7 +42,10 @@ function setup(
   refresh = vi.fn(async () => {}),
 ) {
   const useGitStatus = <T,>(selector: (state: GitStatusBarState) => T): T => selector(state)
-  const props = { useGitStatus, refresh, openRepo, t } as unknown as GitStatusBarProps
+  const watch = vi.fn()
+  const props = {
+    sessionId: 'session-1', useGitStatus, refresh, openRepo, watch, t,
+  } as unknown as GitStatusBarProps
   return render(<GitStatusBar {...props} />)
 }
 

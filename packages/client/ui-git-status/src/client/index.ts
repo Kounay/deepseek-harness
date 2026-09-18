@@ -53,10 +53,11 @@ export function apply(ctx: ClientContext): void {
   ctx.slots.inject('conversation.composer.status', () => ctx.slots.register({
     name: 'conversation.composer.status',
     locale: NS,
-    inject: (_sessionId: SessionId): GitStatusBarInjected => ({
+    inject: (sessionId: SessionId): GitStatusBarInjected => ({
       hooks: { gitStatus: controller.store },
       refresh: () => controller.refresh(),
       openRepo: () => controller.openRepo(),
+      watch: () => { controller.watch(sessionId) },
     }),
   }, GitStatusBar))
 }

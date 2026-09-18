@@ -35,8 +35,6 @@ export const fr = {
   'unknown': 'Inconnu',
   'none': 'Aucun',
   'truncated': 'Tronqué',
-  'json.collapseNode': 'Réduire le nœud JSON',
-  'json.expandNode': 'Développer le nœud JSON',
   'json.label': 'JSON',
   'markdown.footnotes': 'Notes de bas de page',
   'markdown.truncatedCharacters': '… tronqué à {total} caractères',
